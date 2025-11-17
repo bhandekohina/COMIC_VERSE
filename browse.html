@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ComicVerse Hub - Your Ultimate Comic Destination</title>
+    <title>Browse All Comics - ComicVerse Hub</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
@@ -34,55 +34,37 @@
         </div>
     </nav>
 
-    <!-- Hero Carousel -->
-    <div class="hero">
-        <div class="hero-slide active">
-            <img src="IMAGES_WEB/spidy.jpg" alt="Hero 1">
-            <div class="hero-content">
-                <h1>New Arrivals</h1>
-                <p>Discover the latest adventures from your favorite heroes</p>
-                <a href="browse.html" class="hero-btn">Shop Now</a>
-            </div>
-        </div>
-        <div class="hero-slide">
-            <img src="IMAGES_WEB/invencible_2.jpg" alt="Hero 2">
-            <div class="hero-content">
-                <h1>Epic Collections</h1>
-                <p>Build your ultimate comic book collection today</p>
-                <a href="browse.html" class="hero-btn">Explore</a>
-            </div>
-        </div>
-        <div class="hero-slide">
-            <img src="IMAGES_WEB/c702b69fae2ce45641ac942cc321ce1e.jpg" alt="Hero 3">
-            <div class="hero-content">
-                <h1>Exclusive Editions</h1>
-                <p>Limited edition comics you won't find anywhere else</p>
-                <a href="browse.html" class="hero-btn">Get Yours</a>
-            </div>
-        </div>
-        <div class="hero-nav">
-            <div class="hero-dot active" onclick="setSlide(0)"></div>
-            <div class="hero-dot" onclick="setSlide(1)"></div>
-            <div class="hero-dot" onclick="setSlide(2)"></div>
-        </div>
-    </div>
-
-    <!-- New Releases -->
+    <!-- Browse Content -->
     <div class="section">
         <div class="section-header">
-            <h2 class="section-title">New Releases</h2>
-            <p class="section-subtitle">Fresh off the press</p>
+            <h2 class="section-title">Browse All Comics</h2>
+            <p class="section-subtitle">Explore our complete collection</p>
         </div>
-        <div class="comic-grid" id="new-releases"></div>
-    </div>
 
-    <!-- Popular Series -->
-    <div class="section" style="background: #f8f9fa;">
-        <div class="section-header">
-            <h2 class="section-title">Popular Series</h2>
-            <p class="section-subtitle">Fan favorites everyone's talking about</p>
+        <div class="browse-controls">
+            <div class="control-group">
+                <label class="control-label">Filter by Publisher:</label>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" onclick="filterComics('all')">All</button>
+                    <button class="filter-btn" onclick="filterComics('Marvel')">Marvel</button>
+                    <button class="filter-btn" onclick="filterComics('DC')">DC Comics</button>
+                    <button class="filter-btn" onclick="filterComics('Image')">Image</button>
+                    <button class="filter-btn" onclick="filterComics('Dark Horse')">Dark Horse</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label">Sort by:</label>
+                <select id="sort-select" onchange="sortComics(this.value)">
+                    <option value="title">Title (A-Z)</option>
+                    <option value="price-low">Price (Low to High)</option>
+                    <option value="price-high">Price (High to Low)</option>
+                    <option value="date">Release Date</option>
+                </select>
+            </div>
         </div>
-        <div class="comic-grid" id="popular-series"></div>
+
+        <div class="comic-grid" id="browse-grid"></div>
     </div>
 
     <!-- Footer -->
@@ -155,16 +137,14 @@
     <script src="js/main.js"></script>
     <script src="js/search.js"></script>
     <script>
-        // Homepage specific initialization
+        // Browse page specific initialization
         window.onload = function() {
             loadCart();
             updateCartCount();
-            loadHomeComics();
-            startCarousel();
-            initAuthUI();
+            loadBrowseComics();
+            initAuthUI(); // Make sure this is called
             initSearch();
         };
     </script>
 </body>
 </html>
-

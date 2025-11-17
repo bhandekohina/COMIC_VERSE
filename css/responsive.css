@@ -1,0 +1,116 @@
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .comic-grid {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+
+    .detail-container {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-item {
+        grid-template-columns: 80px 1fr;
+        gap: 1rem;
+    }
+
+    .cart-item-price {
+        grid-column: 2;
+        text-align: left;
+        margin-top: 1rem;
+    }
+
+    .nav-content {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .search-container {
+        order: 3;
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+
+    .hero {
+        height: 400px;
+    }
+
+    .hero-content {
+        left: 2%;
+        right: 2%;
+        text-align: center;
+    }
+
+    .section {
+        padding: 2rem 5%;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .browse-controls {
+        padding: 1rem;
+    }
+
+    .filter-buttons {
+        justify-content: center;
+    }
+
+    .detail-actions {
+        flex-direction: column;
+    }
+
+    .detail-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo {
+        font-size: 1.4rem;
+    }
+
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .comic-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+
+    .comic-cover {
+        height: 250px;
+    }
+
+    .comic-info {
+        padding: 1rem;
+    }
+
+    .cart-item {
+        grid-template-columns: 60px 1fr;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .cart-item-image {
+        width: 60px;
+        height: 90px;
+    }
+}

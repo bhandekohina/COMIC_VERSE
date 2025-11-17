@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ComicVerse Hub - Your Ultimate Comic Destination</title>
+    <title>Shopping Cart - ComicVerse Hub</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
@@ -34,55 +34,10 @@
         </div>
     </nav>
 
-    <!-- Hero Carousel -->
-    <div class="hero">
-        <div class="hero-slide active">
-            <img src="IMAGES_WEB/spidy.jpg" alt="Hero 1">
-            <div class="hero-content">
-                <h1>New Arrivals</h1>
-                <p>Discover the latest adventures from your favorite heroes</p>
-                <a href="browse.html" class="hero-btn">Shop Now</a>
-            </div>
-        </div>
-        <div class="hero-slide">
-            <img src="IMAGES_WEB/invencible_2.jpg" alt="Hero 2">
-            <div class="hero-content">
-                <h1>Epic Collections</h1>
-                <p>Build your ultimate comic book collection today</p>
-                <a href="browse.html" class="hero-btn">Explore</a>
-            </div>
-        </div>
-        <div class="hero-slide">
-            <img src="IMAGES_WEB/c702b69fae2ce45641ac942cc321ce1e.jpg" alt="Hero 3">
-            <div class="hero-content">
-                <h1>Exclusive Editions</h1>
-                <p>Limited edition comics you won't find anywhere else</p>
-                <a href="browse.html" class="hero-btn">Get Yours</a>
-            </div>
-        </div>
-        <div class="hero-nav">
-            <div class="hero-dot active" onclick="setSlide(0)"></div>
-            <div class="hero-dot" onclick="setSlide(1)"></div>
-            <div class="hero-dot" onclick="setSlide(2)"></div>
-        </div>
-    </div>
-
-    <!-- New Releases -->
-    <div class="section">
-        <div class="section-header">
-            <h2 class="section-title">New Releases</h2>
-            <p class="section-subtitle">Fresh off the press</p>
-        </div>
-        <div class="comic-grid" id="new-releases"></div>
-    </div>
-
-    <!-- Popular Series -->
-    <div class="section" style="background: #f8f9fa;">
-        <div class="section-header">
-            <h2 class="section-title">Popular Series</h2>
-            <p class="section-subtitle">Fan favorites everyone's talking about</p>
-        </div>
-        <div class="comic-grid" id="popular-series"></div>
+    <!-- Cart Content -->
+    <div class="cart-container">
+        <h1 style="margin-bottom: 2rem;">Shopping Cart</h1>
+        <div id="cart-content"></div>
     </div>
 
     <!-- Footer -->
@@ -150,21 +105,37 @@
         </div>
     </div>
 
+    <!-- Success Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">🎉</div>
+            <h2>Order Placed Successfully!</h2>
+            <p style="color: #999; margin-top: 1rem;">Thank you for your simulated order! Your comics will be delivered to your digital library.</p>
+            <p style="color: #999; margin-top: 0.5rem;" id="order-total"></p>
+            <button class="modal-close" onclick="completeCheckout()">Continue Shopping</button>
+        </div>
+    </div>
+
     <script src="js/data.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
     <script src="js/search.js"></script>
     <script>
-        // Homepage specific initialization
+        // Cart page specific initialization
         window.onload = function() {
+            // Load cart first
             loadCart();
             updateCartCount();
-            loadHomeComics();
-            startCarousel();
+            // Render cart items
+            renderCart();
+            // Initialize authentication
             initAuthUI();
+            // Initialize search
             initSearch();
+            
+            console.log('Cart page loaded. Cart contents:', cart);
         };
     </script>
 </body>
 </html>
-

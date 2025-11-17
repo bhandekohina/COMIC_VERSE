@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ComicVerse Hub - Your Ultimate Comic Destination</title>
+    <title>Comic Details - ComicVerse Hub</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
@@ -34,55 +34,9 @@
         </div>
     </nav>
 
-    <!-- Hero Carousel -->
-    <div class="hero">
-        <div class="hero-slide active">
-            <img src="IMAGES_WEB/spidy.jpg" alt="Hero 1">
-            <div class="hero-content">
-                <h1>New Arrivals</h1>
-                <p>Discover the latest adventures from your favorite heroes</p>
-                <a href="browse.html" class="hero-btn">Shop Now</a>
-            </div>
-        </div>
-        <div class="hero-slide">
-            <img src="IMAGES_WEB/invencible_2.jpg" alt="Hero 2">
-            <div class="hero-content">
-                <h1>Epic Collections</h1>
-                <p>Build your ultimate comic book collection today</p>
-                <a href="browse.html" class="hero-btn">Explore</a>
-            </div>
-        </div>
-        <div class="hero-slide">
-            <img src="IMAGES_WEB/c702b69fae2ce45641ac942cc321ce1e.jpg" alt="Hero 3">
-            <div class="hero-content">
-                <h1>Exclusive Editions</h1>
-                <p>Limited edition comics you won't find anywhere else</p>
-                <a href="browse.html" class="hero-btn">Get Yours</a>
-            </div>
-        </div>
-        <div class="hero-nav">
-            <div class="hero-dot active" onclick="setSlide(0)"></div>
-            <div class="hero-dot" onclick="setSlide(1)"></div>
-            <div class="hero-dot" onclick="setSlide(2)"></div>
-        </div>
-    </div>
-
-    <!-- New Releases -->
-    <div class="section">
-        <div class="section-header">
-            <h2 class="section-title">New Releases</h2>
-            <p class="section-subtitle">Fresh off the press</p>
-        </div>
-        <div class="comic-grid" id="new-releases"></div>
-    </div>
-
-    <!-- Popular Series -->
-    <div class="section" style="background: #f8f9fa;">
-        <div class="section-header">
-            <h2 class="section-title">Popular Series</h2>
-            <p class="section-subtitle">Fan favorites everyone's talking about</p>
-        </div>
-        <div class="comic-grid" id="popular-series"></div>
+    <!-- Detail Content -->
+    <div class="detail-container" id="detail-content">
+        <!-- Dynamic content will be loaded by JavaScript -->
     </div>
 
     <!-- Footer -->
@@ -150,21 +104,47 @@
         </div>
     </div>
 
+    <!-- Success Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">✅</div>
+            <h2>Added to Cart!</h2>
+            <p style="color: #999; margin-top: 1rem;">Item successfully added to your cart</p>
+            <button class="modal-close" onclick="closeModal()">Continue Shopping</button>
+            <button class="modal-close" style="background: #2a2a2a; margin-left: 1rem;" onclick="closeModal(); window.location.href='cart.html';">View Cart</button>
+        </div>
+    </div>
+
     <script src="js/data.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
     <script src="js/search.js"></script>
     <script>
-        // Homepage specific initialization
+        // Detail page specific initialization
         window.onload = function() {
+            // Load cart first
             loadCart();
             updateCartCount();
-            loadHomeComics();
-            startCarousel();
+            // Initialize authentication
             initAuthUI();
+            // Initialize search
             initSearch();
+            // Load comic details
+            loadComicDetail();
         };
+
+        function loadComicDetail() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const comicId = parseInt(urlParams.get('id'));
+            
+            if (comicId) {
+                showDetail(comicId);
+            } else {
+                // Redirect to browse if no ID provided
+                window.location.href = 'browse.html';
+            }
+        }
     </script>
 </body>
 </html>
-
